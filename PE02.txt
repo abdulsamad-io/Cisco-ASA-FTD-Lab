@@ -3,7 +3,7 @@
 !
 hostname PE02
 !
-enable secret
+enable secret cisco
 !
 username admin password 0 cisco
 !
