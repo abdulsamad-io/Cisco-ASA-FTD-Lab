@@ -1,1 +1,58 @@
 
+########## Base configuration
+!
+hostname Core02
+!
+enable secret
+!
+username admin password 0 cisco
+!
+!
+no ip domain-lookup
+ip domain-name devnetlabs.test
+
+!
+ip ssh version 2
+!
+line con 0
+ exec-timeout 3600 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ exec-timeout 3600 0
+ logging synchronous
+ login local
+!
+
+########## Interface Addressing
+!
+interface GigabitEthernet0/0
+ description CONNECTION_TO_ISP_CORE01
+ ip address 10.1.2.2 255.255.255.252
+ no shutdown
+!
+interface GigabitEthernet0/1
+ description CONNECTION_TO_ISP_PE01
+ ip address 10.2.11.1 255.255.255.252
+ no shutdown
+!
+interface GigabitEthernet0/2
+ description CONNECTION_TO_ISP_PE02
+ ip address 10.2.22.1 255.255.255.252
+ no shutdown
+!
+interface GigabitEthernet0/2
+ description CONNECTION_TO_ISP_PE02
+ ip address 10.2.33.1 255.255.255.252
+ no shutdown
+!
+interface Loopback0
+ description Loopback_Zero
+ ip address 2.2.2.2 255.255.255.255
+ no shutdown
+!
+interface Loopback1
+ description Loopback_One
+ ip address 20.20.20.20 255.255.255.255
+ no shutdown
+!
