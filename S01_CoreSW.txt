@@ -1,0 +1,24 @@
+########## Base configuration
+!
+hostname S01_CoreSW
+!
+enable secret cisco
+!
+username admin password 0 cisco
+!
+!
+no ip domain-lookup
+ip domain-name devnetlabs.test
+
+!
+ip ssh version 2
+!
+line con 0
+ exec-timeout 3600 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ exec-timeout 3600 0
+ logging synchronous
+ login local
+!
