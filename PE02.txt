@@ -51,3 +51,22 @@ interface Loopback1
  ip address 192.168.22.22 255.255.255.255
  no shutdown
 !
+
+
+########## ISP Core BGP Configuration
+!
+router bgp 64422
+ bgp log-neighbor-changes
+ network 10.1.22.0 mask 255.255.255.252
+ network 10.2.22.0 mask 255.255.255.252
+ network 192.168.22.22 mask 255.255.255.255
+ neighbor 1.1.1.1 remote-as 64400
+ neighbor 1.1.1.1 update-source Loopback0
+ neighbor 1.1.1.1 ebgp-multihop 255
+ neighbor 2.2.2.2 remote-as 64400
+ neighbor 2.2.2.2 ebgp-multihop 255
+ neighbor 2.2.2.2 update-source Loopback0
+!
+ip route 1.1.1.1 255.255.255.255 10.1.22.1
+ip route 2.2.2.2 255.255.255.255 10.2.22.1
+!
