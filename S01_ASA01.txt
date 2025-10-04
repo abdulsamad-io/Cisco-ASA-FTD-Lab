@@ -21,3 +21,38 @@ policy-map global_policy
  class inspection_default 
   inspect icmp 
 !
+
+########## Interface Addressing
+!
+interface GigabitEthernet0/0
+ description LAN/STATE_Failover_Interface
+ no shutdown
+!             
+interface GigabitEthernet0/1
+ description Connection_to_Internet
+ nameif outside
+ security-level 100
+ ip address 10.10.10.1 255.255.255.248 standby 10.10.10.2
+ no shutdown
+!
+interface GigabitEthernet0/2
+ description Connection_to_LAN
+ nameif lan
+ security-level 0
+ ip address 192.168.10.1 255.255.255.0 standby 192.168.10.2
+ no shutdown
+!
+interface GigabitEthernet0/3
+ description Connection_to_DMZ
+ nameif dmz
+ security-level 50
+ ip address 172.31.10.1 255.255.255.0 standby 172.31.10.2
+ no shutdown
+!
+interface Management0/0
+ description Connection_to_Management
+ nameif mgmt
+ security-level 100
+ ip address dhcp 
+ no shutdown
+!
