@@ -53,7 +53,7 @@ interface Management0/0
  description Connection_to_Management
  nameif mgmt
  security-level 100
- ip address dhcp 
+ ip address 172.16.10.101 255.255.255.0 standby 172.16.10.102  
  no shutdown
 !
 mtu lan 1500
@@ -66,3 +66,13 @@ http 0.0.0.0 0.0.0.0 mgmt
 ssh 0.0.0.0 0.0.0.0 mgmt
 !
 ntp server 45.9.2.181 source mgmt prefer
+!
+
+########## Failover Config
+!
+failover lan unit primary
+failover lan interface FAIL_OVER GigabitEthernet0/0
+failover link FAIL_OVER GigabitEthernet0/0
+failover interface ip FAIL_OVER 10.1.1.1 255.255.255.252 standby 10.1.1.2
+failover
+!

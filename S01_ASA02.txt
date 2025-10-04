@@ -21,3 +21,18 @@ policy-map global_policy
  class inspection_default 
   inspect icmp 
 !
+
+########## Interface Addressing
+!
+interface GigabitEthernet0/0
+ description LAN/STATE_Failover_Interface
+ no shutdown
+
+########## Failover Config
+!
+failover lan unit secondary
+failover lan interface FAIL_OVER GigabitEthernet0/0
+failover link FAIL_OVER GigabitEthernet0/0
+failover interface ip FAIL_OVER 10.1.1.1 255.255.255.252 standby 10.1.1.2
+failover
+!
