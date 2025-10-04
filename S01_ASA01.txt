@@ -56,3 +56,13 @@ interface Management0/0
  ip address dhcp 
  no shutdown
 !
+mtu lan 1500
+mtu dmz 1500
+mtu outside 1500
+mtu mgmt 1500
+!
+http 0.0.0.0 0.0.0.0 mgmt
+!
+ssh 0.0.0.0 0.0.0.0 mgmt
+!
+ntp server 45.9.2.181 source mgmt prefer
