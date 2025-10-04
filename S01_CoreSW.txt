@@ -25,46 +25,29 @@ line vty 0 4
 
 ########## Interface and VLAN Configuration
 !
-interface Port-channel1
- switchport trunk allowed vlan 1400,1450
- switchport trunk encapsulation dot1q
- switchport mode trunk
-!
-interface Port-channel2
- switchport trunk allowed vlan 1400,1450
- switchport trunk encapsulation dot1q
- switchport mode trunk
-!
 interface GigabitEthernet0/0
+ description Uplink_connection_to_core_switch
  switchport trunk allowed vlan 1400,1450
  switchport trunk encapsulation dot1q
  switchport mode trunk
  negotiation auto
 !
 interface GigabitEthernet0/1
- switchport trunk allowed vlan 1400,1450
- switchport trunk encapsulation dot1q
- switchport mode trunk
- negotiation auto
- channel-group 1 mode active
+ description ISP1_connection_to_active
+ switchport access vlan 1400
+ switchport mode access
 !
 interface GigabitEthernet0/2
- switchport trunk allowed vlan 1400,1450
- switchport trunk encapsulation dot1q
- switchport mode trunk
- negotiation auto
- channel-group 2 mode active
+ description ISP1_connection_to_standby
+ switchport access vlan 1400
+ switchport mode access
 !         
 interface GigabitEthernet1/1
- switchport trunk allowed vlan 1400,1450
- switchport trunk encapsulation dot1q
- switchport mode trunk
- negotiation auto
- channel-group 1 mode active
+ description ISP2_connection_to_active
+ switchport access vlan 1450
+ switchport mode access
 !
 interface GigabitEthernet1/2
- switchport trunk allowed vlan 1400,1450
- switchport trunk encapsulation dot1q
- switchport mode trunk
- negotiation auto
- channel-group 2 mode active
+ description ISP2_connection_to_standby
+ switchport trunk allowed vlan 1450
+ switchport mode access
