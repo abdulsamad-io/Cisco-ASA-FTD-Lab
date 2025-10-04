@@ -61,8 +61,6 @@ interface Loopback1
 !
 router bgp 64400
  bgp log-neighbor-changes
- network 10.2.11.0 mask 255.255.255.252
- network 10.2.22.0 mask 255.255.255.252
  network 20.20.20.20 mask 255.255.255.255
  neighbor 1.1.1.1 remote-as 64400
  neighbor 1.1.1.1 update-source Loopback0
