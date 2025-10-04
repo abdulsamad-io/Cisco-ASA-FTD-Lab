@@ -27,7 +27,7 @@ line vty 0 4
 ########## Interface Addressing
 !
 interface GigabitEthernet0/0
- description CONNECTION_TO_MNSBP_LAN
+ description CONNECTION_TO_LAN
  no ip address
  no shutdown
 !
