@@ -29,10 +29,10 @@ interface GigabitEthernet0/0
  no shutdown
 !             
 interface GigabitEthernet0/1
- description Connection_to_Internet
- nameif outside
+ description Connection_to_ISP_link1
+ nameif outside_isp01
  security-level 100
- ip address 10.10.10.1 255.255.255.248 standby 10.10.10.2
+ ip address 10.10.10.1 255.255.255.248 standby 10.10.10.2 
  no shutdown
 !
 interface GigabitEthernet0/2
@@ -47,6 +47,13 @@ interface GigabitEthernet0/3
  nameif dmz
  security-level 50
  ip address 172.31.10.1 255.255.255.0 standby 172.31.10.2
+ no shutdown
+!
+interface GigabitEthernet0/4
+ description Connection_to_ISP_link2
+ nameif outside_isp02
+ security-level 100
+ ip address 110.110.110.1 255.255.255.248 standby 110.110.110.2 
  no shutdown
 !
 interface Management0/0
